@@ -41,6 +41,7 @@
     "sass-loader": "^13.3.2",
     "stylelint": "^15.10.3",
     "stylelint-config-recess-order": "^4.3.0",
-    "terser-webpack-plugin": "^5.3.9"
+    "terser-webpack-plugin": "^5.3.9",
+    "ts-loader": "^9.4.4"
   }
 }

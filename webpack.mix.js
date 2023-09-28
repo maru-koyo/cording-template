@@ -116,18 +116,24 @@ const cssIgnores = [];
 
 for (const ignore of ignores) {
   jsIgnores.push(`${env.RESOURCE_DIR}/**/${ignore}/**/*.js`);
+  jsIgnores.push(`${env.RESOURCE_DIR}/**/${ignore}/**/*.ts`);
 }
 for (const ignore of ignores) {
   cssIgnores.push(`${env.RESOURCE_DIR}/**/${ignore}/**/*.scss`);
 }
 
 glob
-  .sync(`${env.RESOURCE_DIR}/**/*.js`, {
+  .sync([`${env.RESOURCE_DIR}/**/*.js`, `${env.RESOURCE_DIR}/**/*.ts`], {
     ignore: jsIgnores,
   })
   .map(function (file) {
     if (file) {
-      mix.js(file, toPathAssets(file, env.RESOURCE_JS_DIR, env.ASSETS_JS_DIR));
+      const ext = file.split(".").pop();
+      if (ext === "ts") {
+        mix.ts(file, toPathAssets(file, env.RESOURCE_JS_DIR, env.ASSETS_JS_DIR));
+      } else {
+        mix.js(file, toPathAssets(file, env.RESOURCE_JS_DIR, env.ASSETS_JS_DIR));
+      }
     }
   });
 
