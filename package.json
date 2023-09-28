@@ -1,0 +1,46 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "hello",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npx mix watch",
+    "build": "npx mix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.scss": [
+      "stylelint --fix"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.12.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "connect-ssi": "^1.1.1",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.9",
+    "husky": "^8.0.3",
+    "import-glob-loader": "^1.1.0",
+    "laravel-mix": "^6.0.49",
+    "laravel-mix-copy-watched": "^3.0.0",
+    "lint-staged": "^14.0.1",
+    "postcss": "^8.4.30",
+    "postcss-custom-properties": "^13.3.2",
+    "prettier": "^3.0.3",
+    "sass": "^1.68.0",
+    "sass-loader": "^13.3.2",
+    "stylelint": "^15.10.3",
+    "stylelint-config-recess-order": "^4.3.0",
+    "terser-webpack-plugin": "^5.3.9"
+  }
+}

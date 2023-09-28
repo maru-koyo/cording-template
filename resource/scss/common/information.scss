@@ -1,0 +1,279 @@
+@charset 'utf-8';
+@use "sass:math";
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap";
+
+:root {
+  --noto: "Noto Sans JP", sans-serif;
+  --yugo: "游ゴシック体", yugothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  --duration: 0.3s;
+  --opacity: 0.7;
+}
+
+@function clp($min-font-size, $max-font-size, $min-view-port: 768, $max-view-port: 1500) {
+  $font-size-rate: $max-font-size - $min-font-size;
+  $view-port-rate: $max-view-port - $min-view-port;
+  $changing-size: math.div(math.round(math.div($font-size-rate, $view-port-rate) * 10000), 100);
+  $fixed-size: math.div(
+    math.round(($min-font-size - math.div($font-size-rate, $view-port-rate) * $min-view-port) * 62.5),
+    1000
+  );
+  $min-rem-font-size: math.div(math.round($min-font-size * 62.5), 1000);
+  $max-rem-font-size: math.div(math.round($max-font-size * 62.5), 1000);
+
+  @return clamp(#{$min-rem-font-size}rem, #{$fixed-size}rem + #{$changing-size}vw, #{$max-rem-font-size}rem);
+}
+
+@function pct($small, $big, $bool: true) {
+  $value: math.div($small, $big);
+  $value: $value * 100;
+
+  @if $bool {
+    @return $value + "%";
+  } @else {
+    @return $value + "vw";
+  }
+}
+
+@mixin break($break: 768) {
+  @media screen and (max-width: ($break + px)) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@function lh($fz, $lf) {
+  $value: math.div($lf, $fz);
+
+  @return $value;
+}
+
+@function ls($tracking) {
+  $value: math.div($tracking, 1000);
+
+  @return $value + "em";
+}
+
+@mixin font($fz, $lf, $ls) {
+  font-size: $fz + px;
+  line-height: lh($fz, $lf);
+  letter-spacing: ls($ls);
+}
+
+@mixin aspect($width, $height) {
+  width: 100%;
+  height: auto;
+  aspect-ratio: $width / $height;
+}
+
+@mixin wrap($max-width: 1100) {
+  width: 92%;
+  max-width: $max-width + px;
+  margin: 0 auto;
+}
+
+@mixin flex($jc, $ai, $gap: 0, $fd: row) {
+  display: flex;
+  flex-direction: $fd;
+  gap: $gap;
+  align-items: $ai;
+  justify-content: $jc;
+}
+
+@mixin btn($width: 300, $height: 60) {
+  @include flex(center, center);
+
+  position: relative;
+  width: 100%;
+  max-width: $width + "px";
+  height: $height + "px";
+  font-weight: 500;
+  color: #fff;
+  background: #000;
+  border: solid 1px #000;
+  border-radius: 40px;
+  transition: all 0.3s;
+
+  @include font(18, 32, 0);
+
+  @include break(1500) {
+    font-size: clp(14, 18);
+
+    @include break {
+      font-size: 14px;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    content: "";
+    border: 0;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    transition: all var(--duration);
+    transform: translateY(-50%) rotate(45deg);
+
+    @include break(1500) {
+      width: clp(8, 10);
+      height: clp(8, 10);
+
+      @include break {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+
+  @include hover {
+    color: #000;
+    background: #fff;
+    border: solid 1px #000;
+
+    &::after {
+      border-top: solid 2px #000;
+      border-right: solid 2px #000;
+    }
+  }
+}
+
+@mixin btn2($width: 100%, $height: 84, $font-size: 22) {
+  @include flex(flex-start, center);
+
+  position: relative;
+  width: 100%;
+  max-width: $width;
+  height: $height + px;
+  padding-left: 20px;
+  font-weight: 500;
+  color: #000;
+  background: #fff;
+  border: solid 1px #000;
+  transition: all var(--duration);
+
+  @include font($font-size, 33, 380);
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    right: 35px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    content: "";
+    background: #000;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    translate: 0 -50%;
+
+    @include break {
+      right: 15px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    content: "";
+    border: 0;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    transition: all 0.3s;
+    transform: translateY(-50%) rotate(45deg);
+
+    @include break {
+      right: 23px;
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  @include hover {
+    color: #fff;
+    background: #000;
+    border: solid 1px #000;
+
+    &::before {
+      background: #fff;
+    }
+
+    &::after {
+      border-top: solid 2px #000;
+      border-right: solid 2px #000;
+    }
+  }
+}
+
+// --- utilsCSS start ---
+
+.pc-b {
+  display: block !important;
+
+  @include break {
+    display: none !important;
+  }
+}
+
+.sp-b {
+  display: none !important;
+
+  @include break {
+    display: block !important;
+  }
+}
+
+.pc-ib {
+  display: inline-block !important;
+
+  @include break {
+    display: none !important;
+  }
+}
+
+.sp-ib {
+  display: none !important;
+
+  @include break {
+    display: inline-block !important;
+  }
+}
+
+.pc-f {
+  display: flex !important;
+
+  @include break {
+    display: none !important;
+  }
+}
+
+.sp-f {
+  display: none !important;
+
+  @include break {
+    display: flex !important;
+  }
+}
+
+.img-wrap {
+  width: fit-content;
+
+  img {
+    width: 100%;
+  }
+}

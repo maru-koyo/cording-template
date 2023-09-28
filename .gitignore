@@ -1,0 +1,31 @@
+db
+app/assets
+node_modules
+
+app/wp-admin/
+app/wp-content/index.php
+app/wp-content/languages
+app/wp-content/plugins/index.php
+app/wp-content/themes/index.php
+app/wp-includes/
+app/index.php
+app/license.txt
+app/readme.html
+app/wp-*.php
+app/xmlrpc.php
+app/wp-content/uploads/
+app/wp-content/plugins
+# Configuration
+app/wp-config.php
+
+# Example themes
+app/wp-content/themes/twenty*/
+
+
+logs
+*.log
+npm-debug.log*
+
+.DS_Store
+
+*.local
