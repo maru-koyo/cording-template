@@ -103,14 +103,14 @@ function getBottomLevelDirectories(directoryPath) {
   return directories;
 }
 
-const bottomLevelDirectories = getBottomLevelDirectories(`${env.RESOURCE_DIR}/${env.SRC_IMG_DIR}`);
+const bottomLevelDirectories = getBottomLevelDirectories(`${env.RESOURCE_DIR}/${env.RESOURCE_IMG_DIR}`);
 
 bottomLevelDirectories.map((bottomLevelDir) => {
   const setPath = `${env.ASSETS_IMG_DIR}/${bottomLevelDir}`;
   mix.copyWatched(`${env.RESOURCE_DIR}/${setPath}`, `app${env.SUB_DIR ? "/" + env.SUB_DIR : ""}/assets/${setPath}`);
 });
 
-const ignores = env.SRC_IGNORE.split(",");
+const ignores = env.RESOURCE_IGNORE.split(",");
 const jsIgnores = [];
 const cssIgnores = [];
 
@@ -127,7 +127,7 @@ glob
   })
   .map(function (file) {
     if (file) {
-      mix.js(file, toPathAssets(file, env.SRC_JS_DIR, env.ASSETS_JS_DIR));
+      mix.js(file, toPathAssets(file, env.RESOURCE_JS_DIR, env.ASSETS_JS_DIR));
     }
   });
 
@@ -137,7 +137,7 @@ glob
   })
   .map(function (file) {
     if (file) {
-      mix.sass(file, toPathAssets(file, env.SRC_CSS_DIR, env.ASSETS_CSS_DIR)).options({
+      mix.sass(file, toPathAssets(file, env.RESOURCE_CSS_DIR, env.ASSETS_CSS_DIR)).options({
         processCssUrls: false,
         autoprefixer: {
           options: {

@@ -1,3 +1,7 @@
+import { gsap } from "gsap";
 export default function TopPage() {
-  console.log("hello");
+  gsap.to("h1", {
+    duration: 1,
+    opacity: 0,
+  });
 }
