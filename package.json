@@ -4,8 +4,8 @@
   "description": "hello",
   "main": "main.js",
   "scripts": {
-    "dev": "pnpm mix watch",
-    "build": "pnpm mix",
+    "dev": "npx mix watch",
+    "build": "npx mix",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -41,6 +41,8 @@
     "sass-loader": "^13.3.2",
     "stylelint": "^15.10.3",
     "stylelint-config-recess-order": "^4.3.0",
+    "stylelint-config-recommended-scss": "^13.0.0",
+    "stylelint-scss": "^5.2.1",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.4"
   }

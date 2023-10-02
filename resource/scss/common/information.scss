@@ -28,9 +28,9 @@
   $value: $value * 100;
 
   @if $bool {
-    @return $value + "%";
+    @return #{$value} + "%";
   } @else {
-    @return $value + "vw";
+    @return #{$value} + vw;
   }
 }
 
@@ -57,7 +57,7 @@
 @function ls($tracking) {
   $value: math.div($tracking, 1000);
 
-  @return $value + "em";
+  @return #{$value}em;
 }
 
 @mixin font($fz, $lf, $ls) {
