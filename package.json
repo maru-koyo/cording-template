@@ -4,8 +4,8 @@
   "description": "hello",
   "main": "main.js",
   "scripts": {
-    "dev": "npx mix watch",
-    "build": "npx mix",
+    "dev": "pnpm mix watch",
+    "build": "pnpm mix",
     "prepare": "husky install"
   },
   "lint-staged": {

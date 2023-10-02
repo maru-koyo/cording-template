@@ -28,7 +28,6 @@ mix.webpackConfig({
       }),
     ],
   },
-
   module: {
     rules: [
       {
