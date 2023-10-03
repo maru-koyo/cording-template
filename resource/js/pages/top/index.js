@@ -1,10 +1,5 @@
-import { gsap } from "gsap";
+import Scrollbar from "smooth-scrollbar";
+
 export default function TopPage() {
-  gsap.fromTo(
-    "h1",
-    {
-      opacity: 0,
-    },
-    { duration: 1, opacity: 1 },
-  );
+  Scrollbar.init(document.querySelector("#my-scrollbar"), { damping: 0.02 });
 }
