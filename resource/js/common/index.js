@@ -1,1 +1,5 @@
-export default function CommonPage() {}
+import Components from "./components";
+
+export default function CommonPage() {
+  Components();
+}

@@ -1,2 +1,4 @@
-@import "./top";
-@import "./about";
+html {
+  @import "./top";
+  @import "./about";
+}

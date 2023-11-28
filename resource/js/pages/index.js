@@ -1,9 +1,11 @@
-import TopPage from "./top";
+let data = document.body.dataset.page;
+if (data.indexOf("-") !== -1) {
+  data = data.replace(/-/g, "/");
+}
+const dir = `/${data}/`;
 
-const pageType = document.body.dataset.page;
 export default function Pages() {
-  if (pageType === "top") {
-    TopPage();
-  } else if (pageType === "about") {
-  }
+  import(`.${dir}`).then((module) => {
+    module.default();
+  });
 }

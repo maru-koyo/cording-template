@@ -1,3 +1,5 @@
 @import "reset";
-@import "information";
-@import "common";
+html {
+  @import "information";
+  @import "common";
+}

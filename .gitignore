@@ -21,6 +21,10 @@ app/wp-config.php
 # Example themes
 app/wp-content/themes/twenty*/
 
+iplogs
+mailformpro
+mfp.statics
+
 
 logs
 *.log
