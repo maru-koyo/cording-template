@@ -1,0 +1,48 @@
+@use "sass:math";
+
+$minmax: min;
+@if $immobile {
+  $minmax: max;
+  @each $key, $value in $breakMap {
+    $breakMap: map-merge(
+      $breakMap,
+      (
+        $key: map-get($breakMap, $key) - 1,
+      )
+    );
+  }
+}
+
+@function clp($min-font-size, $max-font-size, $min-view-port: 768, $max-view-port: 1500) {
+  $font-size-rate: $max-font-size - $min-font-size;
+  $view-port-rate: $max-view-port - $min-view-port;
+  $changing-size: math.div(math.round(math.div($font-size-rate, $view-port-rate) * 10000), 100);
+  $fixed-size: math.div(
+    math.round(($min-font-size - math.div($font-size-rate, $view-port-rate) * $min-view-port) * 62.5),
+    1000
+  );
+  $min-rem-font-size: math.div(math.round($min-font-size * 62.5), 1000);
+  $max-rem-font-size: math.div(math.round($max-font-size * 62.5), 1000);
+
+  @return clamp(#{$min-rem-font-size}rem, #{$fixed-size}rem + #{$changing-size}vw, #{$max-rem-font-size}rem);
+}
+
+@function pct($small, $big, $bool: true) {
+  $value: math.div($small, $big);
+  $value: $value * 100;
+  @if $bool {
+    @return #{$value} + "%";
+  } @else {
+    @return #{$value} + "vw";
+  }
+}
+
+@function lh($fz, $lf) {
+  $value: math.div($lf, $fz);
+  @return $value;
+}
+
+@function ls($tracking) {
+  $value: math.div($tracking, 1000);
+  @return #{$value}em;
+}

@@ -1,0 +1,26 @@
+@charset 'utf-8';
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;&display=swap";
+// pc-first
+$immobile: false;
+// min-base
+$breakMap: (
+  xl: 1280,
+  lg: 1024,
+  md: 768,
+  sm: 640,
+  xs: 500,
+) !default;
+
+:root {
+  --noto: "Noto Sans JP", sans-serif;
+  --yugo: "游ゴシック体", yugothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+
+  --color-base: #000;
+  --bg-base: #fff;
+
+  --fz-xl: 20px;
+  --fz-lg: 18px;
+  --fz-md: 16px;
+  --fz-sm: 14px;
+  --fz-xs: 12px;
+}

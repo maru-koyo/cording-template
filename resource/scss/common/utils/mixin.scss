@@ -1,0 +1,25 @@
+@mixin break($breakMapKey: md) {
+  @media screen and (#{$minmax}-width:#{map-get($breakMap, $breakMapKey)}px) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin font($fz, $lf, $ls) {
+  font-size: $fz + px;
+  line-height: lh($fz, $lf);
+  letter-spacing: ls($ls);
+}
+
+@mixin wrap($max-width: 1100) {
+  width: 90%;
+  max-width: $max-width + px;
+  margin: 0 auto;
+}

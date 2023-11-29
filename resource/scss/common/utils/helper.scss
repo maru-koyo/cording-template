@@ -1,0 +1,63 @@
+.img-wrap {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@each $key, $value in $breakMap {
+  .#{$key}-b {
+    display: block !important;
+    @include break($key) {
+      display: none !important;
+    }
+  }
+
+  .-#{$key}-b {
+    display: none !important;
+    @include break($key) {
+      display: block !important;
+    }
+  }
+
+  .#{$key}-g {
+    display: grid !important;
+    @include break($key) {
+      display: none !important;
+    }
+  }
+  .-#{$key}-g {
+    display: none !important;
+    @include break($key) {
+      display: grid !important;
+    }
+  }
+
+  .#{$key}-ib {
+    display: inline-block !important;
+    @include break($key) {
+      display: none !important;
+    }
+  }
+
+  .-#{$key}-ib {
+    display: none !important;
+    @include break($key) {
+      display: inline-block !important;
+    }
+  }
+
+  .#{$key}-f {
+    display: flex !important;
+    @include break($key) {
+      display: none !important;
+    }
+  }
+
+  .-#{$key}-f {
+    display: none !important;
+    @include break($key) {
+      display: flex !important;
+    }
+  }
+}
