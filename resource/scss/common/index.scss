@@ -1,5 +1,6 @@
 @import "base";
 @import "utils";
 
-html {
+body {
+  font-size: var(--fz-md);
 }

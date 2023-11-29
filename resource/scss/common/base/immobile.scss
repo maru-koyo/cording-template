@@ -1,0 +1,12 @@
+$minmax: min;
+@if $immobile {
+  $minmax: max;
+  @each $key, $value in $breakMap {
+    $breakMap: map-merge(
+      $breakMap,
+      (
+        $key: map-get($breakMap, $key) - 1,
+      )
+    );
+  }
+}

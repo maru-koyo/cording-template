@@ -1,18 +1,5 @@
 @use "sass:math";
 
-$minmax: min;
-@if $immobile {
-  $minmax: max;
-  @each $key, $value in $breakMap {
-    $breakMap: map-merge(
-      $breakMap,
-      (
-        $key: map-get($breakMap, $key) - 1,
-      )
-    );
-  }
-}
-
 @function clp($min-font-size, $max-font-size, $min-view-port: 768, $max-view-port: 1500) {
   $font-size-rate: $max-font-size - $min-font-size;
   $view-port-rate: $max-view-port - $min-view-port;

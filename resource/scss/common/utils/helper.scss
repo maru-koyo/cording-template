@@ -6,6 +6,13 @@
 }
 
 @each $key, $value in $breakMap {
+  .#{$key}-mt-0 {
+    display: block !important;
+    @include break($key) {
+      display: none !important;
+    }
+  }
+
   .#{$key}-b {
     display: block !important;
     @include break($key) {

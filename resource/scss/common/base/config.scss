@@ -1,7 +1,8 @@
 @charset 'utf-8';
 @import "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;&display=swap";
+
 // pc-first
-$immobile: false;
+$immobile: true;
 // min-base
 $breakMap: (
   xl: 1280,
@@ -10,6 +11,7 @@ $breakMap: (
   sm: 640,
   xs: 500,
 ) !default;
+@import "immobile";
 
 :root {
   --noto: "Noto Sans JP", sans-serif;
@@ -18,9 +20,6 @@ $breakMap: (
   --color-base: #000;
   --bg-base: #fff;
 
-  --fz-xl: 20px;
-  --fz-lg: 18px;
-  --fz-md: 16px;
-  --fz-sm: 14px;
-  --fz-xs: 12px;
+  @media screen and (#{$minmax}-width:#{map-get($breakMap, md)}px) {
+  }
 }
